@@ -29,8 +29,10 @@ This project provides a FastAPI server for the Parler-TTS library, allowing user
 
 2. Install the required dependencies:
    ```
-   pip install fastapi uvicorn pydantic soundfile torch transformers parler-tts
+   pip install -r requirements.txt
    ```
+
+   Note: This will install the CUDA-enabled version of PyTorch. Make sure you have the appropriate CUDA version installed on your system.
 
 ## Usage
 
