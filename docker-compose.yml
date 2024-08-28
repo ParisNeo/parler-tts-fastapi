@@ -1,0 +1,17 @@
+version: '3'
+services:
+  parler-tts-api:
+    build: .
+    ports:
+      - "8593:8593"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

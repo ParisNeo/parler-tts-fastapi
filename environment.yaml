@@ -1,0 +1,20 @@
+name: parler-tts-api
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - cudatoolkit=12.1
+  - pytorch=2.0.1
+  - torchvision=0.15.2
+  - torchaudio=2.0.2
+  - pip:
+    - fastapi==0.68.0
+    - uvicorn==0.15.0
+    - pydantic==1.8.2
+    - soundfile==0.10.3.post1
+    - transformers==4.11.3
+    - git+https://github.com/huggingface/parler-tts.git
+    - nltk==3.6.3
