@@ -23,7 +23,7 @@ This project provides a FastAPI server for the Parler-TTS library, allowing user
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/parler-tts-server.git
+   git clone https://github.com/ParisNeo/parler-tts-fastapi.git
    cd parler-tts-server
    ```
 
