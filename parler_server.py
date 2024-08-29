@@ -1,3 +1,23 @@
+"""
+Project: Parler-TTS-FastAPI
+Author: ParisNeo (Research Engineer)
+Version: 1.1
+Description: 
+This project implements a FastAPI-based web service for the Parler-TTS (Text-to-Speech) model.
+It provides endpoints for generating speech from text input, supporting both single-request
+and streaming responses. The API can output audio in base64 encoded format or as WAV files.
+It's designed to run on either CPU or GPU, offering flexibility for different deployment scenarios.
+
+Key Features:
+- Text-to-speech generation with customizable voice descriptions
+- Streaming capability for processing longer texts
+- Support for base64 and WAV output formats
+- GPU acceleration support
+- Sentence-by-sentence processing for streaming responses
+
+This API serves as a powerful tool for integrating high-quality text-to-speech capabilities
+into various applications, from voice assistants to accessibility tools.
+"""
 import argparse
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import StreamingResponse, Response
