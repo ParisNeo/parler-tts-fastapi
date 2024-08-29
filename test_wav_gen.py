@@ -4,8 +4,8 @@ import base64
 url = "http://localhost:8593/generate_speech"
 
 data = {
-    "text": "Hi there, how can I assist you?",
-    "voice_description": "Alex, a groovy male voice"
+    "text": "From the streets to the beats, I'm rising up like heat. Got rhymes so sweet, they'll sweep you off your feet. My lyrics are elite, can't compete with this treat. I'm dropping bars like they're obsolete, complete with a rhythmic heartbeat.",
+    "voice_description": "male rapper voice. Groovy."
 }
 
 response = requests.post(url, json=data)

@@ -21,10 +21,9 @@ This project provides a FastAPI server for the Parler-TTS library, allowing user
 
 ## Installation
 
-1. Clone this repository:
+1. Install pytorch cuda version:
    ```
-   git clone https://github.com/ParisNeo/parler-tts-fastapi.git
-   cd parler-tts-server
+   pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 --upgrade
    ```
 
 2. Install the required dependencies:
@@ -88,4 +87,4 @@ This project is licensed under the Apache 2.0 License.
 
 ## Acknowledgements
 
-This project uses the Parler-TTS model. Please refer to the [Parler-TTS repository](https://github.com/ParisNeo/parler-tts) for more information about the model and its license.
+This project uses the Parler-TTS model. Please refer to the [Parler-TTS repository](https://github.com/huggingface/parler-tts) for more information about the model and its license.

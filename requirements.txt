@@ -3,10 +3,6 @@ uvicorn
 pydantic
 soundfile
 nltk==3.6.3
---find-links https://download.pytorch.org/whl/cu121
-torch
-torchaudio
-torchvision
 git+https://github.com/huggingface/parler-tts.git
 requests
 numpy

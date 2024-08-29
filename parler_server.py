@@ -16,6 +16,10 @@ app = FastAPI(title="Parler-TTS API", voice_description="API for text-to-speech 
 
 # Load model and tokenizer
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
+if torch.cuda.is_available():
+    print("Using Cuda.")
+else:
+    print("Using CPU.")
 model = ParlerTTSForConditionalGeneration.from_pretrained("parler-tts/parler-tts-mini-v1").to(device)
 tokenizer = AutoTokenizer.from_pretrained("parler-tts/parler-tts-mini-v1")
 
