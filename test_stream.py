@@ -21,8 +21,8 @@ def audio_callback(outdata, frames, time, status):
 url = "http://localhost:8593/generate_speech_stream"
 
 data = {
-    "text": "Listen to this flow:",
-    "voice_description": "In the game of rhymes, I'm the undisputed champ, lyrics so hot they'll leave your speakers damp. My flow's smooth like butter, words sharp as a razor, spittin' verses that'll make you a true hip-hop praiser. From the streets to the beats, I'm always on the grind, leaving wack MCs far behind in my rhyme design."
+    "text": "From the streets to the beats, I'm rising up like heat. Got rhymes so sweet, they'll sweep you off your feet. My lyrics are elite, can't compete with this treat. I'm dropping bars like they're obsolete, complete with a rhythmic heartbeat.",
+    "voice_description": "male rapper voice. Groovy."
 }
 
 response = requests.post(url, json=data, stream=True)
