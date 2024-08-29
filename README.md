@@ -84,8 +84,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the Apache 2.0 License.
 
 ## Acknowledgements
 
-This project uses the Parler-TTS model. Please refer to the [Parler-TTS repository](https://github.com/parler-tts/parler-tts) for more information about the model and its license.
+This project uses the Parler-TTS model. Please refer to the [Parler-TTS repository](https://github.com/ParisNeo/parler-tts) for more information about the model and its license.

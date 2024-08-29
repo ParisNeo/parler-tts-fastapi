@@ -12,7 +12,7 @@ from typing import List
 
 nltk.download('punkt')
 
-app = FastAPI(title="Parler-TTS API", description="API for text-to-speech generation using Parler-TTS")
+app = FastAPI(title="Parler-TTS API", voice_description="API for text-to-speech generation using Parler-TTS")
 
 # Load model and tokenizer
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -20,15 +20,15 @@ model = ParlerTTSForConditionalGeneration.from_pretrained("parler-tts/parler-tts
 tokenizer = AutoTokenizer.from_pretrained("parler-tts/parler-tts-mini-v1")
 
 class TTSRequest(BaseModel):
-    prompt: str
-    description: str
+    text: str
+    voice_description: str
 
 class TTSResponse(BaseModel):
     audio: str  # Base64 encoded WAV file
 
-def generate_audio_chunk(prompt: str, description: str) -> bytes:
-    input_ids = tokenizer(description, return_tensors="pt").input_ids.to(device)
-    prompt_input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
+def generate_audio_chunk(text: str, voice_description: str) -> bytes:
+    input_ids = tokenizer(voice_description, return_tensors="pt").input_ids.to(device)
+    prompt_input_ids = tokenizer(text, return_tensors="pt").input_ids.to(device)
 
     generation = model.generate(input_ids=input_ids, prompt_input_ids=prompt_input_ids)
     audio_arr = generation.cpu().numpy().squeeze()
@@ -41,7 +41,7 @@ def generate_audio_chunk(prompt: str, description: str) -> bytes:
 @app.post("/generate_speech", response_model=TTSResponse)
 async def generate_speech(request: TTSRequest):
     try:
-        audio_data = generate_audio_chunk(request.prompt, request.description)
+        audio_data = generate_audio_chunk(request.text, request.voice_description)
         audio_base64 = base64.b64encode(audio_data).decode('utf-8')
         return TTSResponse(audio=audio_base64)
     except Exception as e:
@@ -50,11 +50,11 @@ async def generate_speech(request: TTSRequest):
 @app.post("/generate_speech_stream")
 async def generate_speech_stream(request: TTSRequest):
     try:
-        sentences = nltk.sent_tokenize(request.description)
+        sentences = nltk.sent_tokenize(request.voice_description)
         
         async def generate():
             for sentence in sentences:
-                audio_chunk = generate_audio_chunk(request.prompt, sentence)
+                audio_chunk = generate_audio_chunk(request.text, sentence)
                 yield audio_chunk
         
         return StreamingResponse(generate(), media_type="audio/wav")
