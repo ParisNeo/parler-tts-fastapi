@@ -163,14 +163,15 @@ async def root():
     """
     return {"message": "Welcome to the Parler-TTS API"}
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument('--host', type=str, default='0.0.0.0', help='Host to run the server on')
     parser.add_argument('--port', type=int, default=8593, help='Port to run the server on')
-    parser.add_argument('--use-gpu', action='store_true', help='Use GPU for inference if available')
+    parser.add_argument('--use-cpu', action='store_true', help='Use CPU for inference instead of GPU')
     args = parser.parse_args()
 
-    if args.use_gpu and torch.cuda.is_available():
+    if not args.use_cpu and torch.cuda.is_available():
         device = "cuda:0"
         print("Using GPU for inference.")
     else:
